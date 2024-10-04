@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html amp lang="en">
+
+<head>
+	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
+    <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
+	<link rel="manifest" href="../assets/site.webmanifest">
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
+    <style amp-boilerplate>
+        body {
+            -webkit-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -moz-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            -ms-animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+            animation: -amp-start 8s steps(1, end) 0s 1 normal both;
+        }
+
+        @-webkit-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @-moz-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @-ms-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @-o-keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        @keyframes -amp-start {
+            from {
+                visibility: hidden;
+            }
+
+            to {
+                visibility: visible;
+            }
+        }
+
+        .zoom{
+            margin: -4%;
+        }
+    </style>
+    <noscript>
+        <style amp-boilerplate>
+            body {
+                -webkit-animation: none;
+                -moz-animation: none;
+                -ms-animation: none;
+                animation: none;
+            }
+        </style>
+    </noscript>
+	<script>
+		const fileNamePrefix = 'VIDEO';	/* XXXXX_01.MP4		*/
+		const pdfName = "";											/* XXXXX.PDF		*/
+		const numberOfPages = 19;									/* NUMBER OF PAGES	*/							/* PAGE TITLE		*/
+
+		/* DO NOT FORGET TO CHANGE THE GTAG AND TITLE OF AMP-STORY BELOW: CMD + F -> G- REPLACE ${GTAG}*/
+
+	</script>
+</head>
+
+<body>
+    <amp-story standalone title="Shanya" publisher="Devlin" supports-landscape>   
+		<div id="app">
+			<amp-story-page id="my-zero-page" auto-advance-after="5s">
+				<amp-story-grid-layer template="fill" autoplay>
+					<amp-img :src="`./assets/${fileNamePrefix}_00.jpg`" height="1080" width="1920" alt="">
+					</amp-img>
+				</amp-story-grid-layer>
+			</amp-story-page>    
+	
+				<amp-story-page :id="list[index].id" v-for="(item, index) in list" :auto-advance-after="`video${index}`">
+					<amp-story-grid-layer template="fill">
+						<amp-video layout="fill" autoplay :id="`video${index}`" :src="`./assets/${list[index].src}`" height="1080" width="1980" type="video/mp4">
+							<div fallback>
+								<p>This browser does not support the video element.</p>
+							</div>
+						</amp-video>
+					</amp-story-grid-layer>
+					<amp-story-page-outlink v-if="listLen - 1 == index" layout="nodisplay" theme="light">
+						<a :href="`/hbd`" title="doorgaan">Ga door</a>
+					</amp-story-page-outlink>
+				</amp-story-page>
+			</div>
+		</amp-story>
+		<script>
+			const { createApp, ref } = Vue
+	
+			createApp({
+				setup() {
+					const padNumberWithZeros = (number, length) => {
+						return number.toString().padStart(length, '0');
+					};
+					const nums = ['first', 'second', 'third', 'forth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twentieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth', 'thirtieth'];
+					const list = [];
+					for (let i = 1; i <= numberOfPages; i++) {
+						const paddedIndex = padNumberWithZeros(i, 2);
+						const filename = `${fileNamePrefix}_${paddedIndex}.mp4`;	// FORMAT: NAME_OF_FILE_01.mp4
+						const id = `my-${nums[i - 1]}-page`;
+	
+						list.push({ src: filename, id: id });
+					}
+					const listLen = list.length
+					const pdf = pdfName;
+					return {
+						listLen,
+						pdf,
+						list,
+						fileNamePrefix,
+					}
+				}
+			}).mount('#app')
+		</script>
+	</body>
+	
+	</html>

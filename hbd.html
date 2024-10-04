@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="manifest" href="/assets/site.webmanifest">
+	<title>Gefeliciteerd!!</title>
+	<style>
+		#main-content {
+			display: none;
+		}
+
+		body {
+			font-family: Arial, sans-serif;
+			background-image: url('/assets/3486805.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			padding: 20px;
+			margin: 0;
+		}
+
+		h1 {
+			color: white;
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		.content-block {
+			display: flex;
+			flex-direction: column;
+			background-color: rgba(255, 255, 255, 0.85);
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.content-block img {
+			width: 100%;
+			height: auto;
+			border-radius: 10px;
+		}
+
+		.content-block p {
+			font-size: 1.1rem;
+			line-height: 1.6;
+			margin: 10px 0;
+		}
+
+		/* For desktop, display text and image side by side */
+		@media(min-width: 768px) {
+			.content-block {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.content-block:nth-child(even) {
+				flex-direction: row-reverse;
+				/* Reverse order for alternating layout */
+			}
+
+			.content-block img {
+				width: 45%;
+			}
+
+			.content-block p {
+				width: 45%;
+				padding: 0 20px;
+			}
+		}
+
+		@use 'sass:list';
+
+		:root {
+			--color-primary: white;
+			--color-surface: #030303;
+		}
+
+
+		@function highlight($gap, $size: 0.25vmin, $color: var(--c)) {
+			@return -#{$gap $gap / 1.5 $size $color};
+		}
+
+		@function highlights() {
+			$result: (
+			);
+		$gap: 0.25vmin;
+		$count: 20;
+
+		@for $i from $count through 0 {
+			@if ($i ==$count) {
+				$result: list.append($result,
+						highlight($i * $gap, 0.01vmin, var(--c2)),
+						"comma"
+					);
+			}
+
+			@else if ($i ==$count - 1) {
+				$result: list.append($result,
+						highlight($i * $gap, 0.1vmin, rgba(255, 255, 255, 0.9)),
+						"comma"
+					);
+			}
+
+			@else {
+				$result: list.append($result,
+						highlight($i * $gap, 0.025vmin, var(--c)),
+						"comma"
+					);
+			}
+		}
+
+		@return $result;
+		}
+
+		.gefeliciteerd {
+			font-size: 8vw;
+			padding: 40px;
+			display: grid;
+			place-items: center;
+			text-shadow: 5px 5px #030303;
+			font-family: "Rajdhani", sans-serif;
+			font-weight: bold;
+			text-align: center;
+			background: conic-gradient(#f6a2f6,
+					#e74f89,
+					#7e7ecb,
+					#ffd500,
+					#ee75d2,
+					#13f5fa,
+					#f6a2f6);
+
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-fill-color: transparent;
+
+			&::before {
+				position: absolute;
+				inset: 0;
+				color: transparent;
+				--c: color-mix(in srgb, white, transparent 94%);
+				--c2: var(--color-surface);
+				text-shadow: highlights();
+			}
+		}
+
+		#video-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: black;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			z-index: 9999;
+		}
+
+		#video-overlay video {
+			width: 100%;
+			height: auto;
+			max-width: 100%;
+			max-height: 100%;
+		}
+
+		a.labs-follow-me {
+			left: 2rem;
+			right: 2rem;
+			bottom: 1rem;
+			top: unset;
+			text-align: center;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="video-overlay">
+		<video id="intro-video" controls autoplay>
+			<source src="/content/720p.mp4" type="video/mp4">
+			Your browser does not support the video tag.
+		</video>
+	</div>
+	<div id="main-content">
+		<div class="gefeliciteerd">
+			GEFELICITEERD!!
+		</div>
+		<!-- Content block 1 (Text + Image) -->
+		<div class="content-block">
+			<p>Lieve Shanya, een verjaardagskaart is natuurlijk niet meer van deze tijd, dus dacht ik: ik maak een
+				digitale voor je!</p>
+			<img src="/content/IMG_2387.jpg" alt="Description of photo 1">
+		</div>
+
+		<!-- Content block 2 (Image + Text) -->
+		<div class="content-block">
+			<img src="/content/IMG_2325.jpg" alt="Description of photo 2">
+			<p>Quisque vel nibh vitae sapien finibus bibendum. Integer in urna euismod, vehicula neque a, fermentum
+				turpis.
+				Nam
+				faucibus nisl nec sapien aliquam, ac ullamcorper turpis fermentum.</p>
+		</div>
+
+		<!-- Content block 3 (Text + Image) -->
+		<div class="content-block">
+			<p>Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer vehicula
+				justo id
+				sem congue, nec malesuada justo vestibulum.</p>
+			<img src="/content/IMG_0097.jpg" alt="Description of photo 3">
+		</div>
+		<div class="content-block">
+			Hierna volgt een mooie foto slide.
+			Klik op de knop hieronder!
+		</div>
+		<div style="display: flex; justify-content: center; align-items: center; width: 100%">
+		<a href="/slides" style="padding: 20px; border-radius: 25px;; border: solid rgb(22, 90, 143) 4px; color: black; background-color: rgb(0, 145, 255); text-decoration: none;">knoppie</a>
+	</div>
+	</div>
+</body>
+<script>
+    // Get video and main content elements
+    const videoOverlay = document.getElementById('video-overlay');
+    const mainContent = document.getElementById('main-content');
+    const introVideo = document.getElementById('intro-video');
+
+    // Listen for when the video ends
+    introVideo.addEventListener('ended', () => {
+      // Hide the video overlay
+      videoOverlay.style.display = 'none';
+      
+      // Show the main content
+      mainContent.style.display = 'block';
+    });
+  </script>
+</html>

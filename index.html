@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="manifest" href="/assets/site.webmanifest">
+	<title>Gefeliciteerd!!</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-image: url('/assets/shanya-lock.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+			margin: 0;
+		}
+
+		.login-container {
+			background-color: #ffffff93;
+			padding: 20px;
+			border-radius: 10px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			width: 300px;
+			text-align: center;
+		}
+
+		h2 {
+			margin-bottom: 20px;
+		}
+
+		input[type="text"],
+		input[type="password"] {
+			width: 80%;
+			padding: 10px;
+			margin: 10px 0;
+			border-radius: 5px;
+			border: 1px solid #ccc;
+		}
+
+		button {
+			width: 50%;
+			padding: 10px;
+			background-color: #007AFF;
+			color: white;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+
+		button:hover {
+			background-color: #005bb5;
+		}
+
+		.error {
+			color: red;
+			font-size: 0.9rem;
+			margin-top: 10px;
+		}
+
+		.success {
+			color: green;
+			font-size: 0.9rem;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="login-container">
+		<h2>Noem een rood voorwerp:</h2>
+		<div>
+			<input type="text" id="username" placeholder="Ff checken of je 't nog weet" required>
+			<button onclick="login()">Check</button>
+		</div>
+		<div id="message"></div>
+	</div>
+
+	<script>
+		// Predefined user credentials
+		const validUsernames = ["groene dobbelsteen", "Groene Dobbelsteen", "Groene dobbelsteen", "groene dobelsteen", "Groene Dobelsteen", "Groene dbbelsteen"];
+
+		function login() {
+			// Get the values entered by the user
+			const username = document.getElementById("username").value;
+			const message = document.getElementById("message");
+
+			// Clear any previous message
+			message.textContent = '';
+
+			// Validate input
+			if (validUsernames.includes(username)) {
+				message.textContent = "Login successful!";
+				message.className = "success";
+				setTimeout(() => {
+					window.location.href = '/hbd.html';
+				}, 1000);
+			} else {
+				message.textContent = "Invalid username or password.";
+				message.className = "error";
+			}
+		}
+	</script>
+
+</body>
+
+</html>
