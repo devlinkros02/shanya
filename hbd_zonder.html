@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+	<link rel="manifest" href="/assets/site.webmanifest">
+	<title>Gefeliciteerd!!</title>
+	<style>
+		body {
+			font-family: Arial, sans-serif;
+			background-image: url('/assets/3486805.jpg');
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: column;
+			padding: 20px;
+			margin: 0;
+		}
+
+		h1 {
+			color: white;
+			text-align: center;
+			margin-bottom: 40px;
+		}
+
+		.content-block {
+			display: flex;
+			flex-direction: column;
+			background-color: rgba(255, 255, 255, 0.85);
+			padding: 20px;
+			border-radius: 10px;
+			margin-bottom: 20px;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+		}
+
+		.content-block img {
+			width: 100%;
+			height: auto;
+			border-radius: 10px;
+		}
+
+		.content-block p {
+			font-size: 1.1rem;
+			line-height: 1.6;
+			margin: 10px 0;
+		}
+
+		/* For desktop, display text and image side by side */
+		@media(min-width: 768px) {
+			.content-block {
+				flex-direction: row;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.content-block:nth-child(even) {
+				flex-direction: row-reverse;
+				/* Reverse order for alternating layout */
+			}
+
+			.content-block img {
+				width: 45%;
+			}
+
+			.content-block p {
+				width: 45%;
+				padding: 0 20px;
+			}
+		}
+
+		@use 'sass:list';
+
+		:root {
+			--color-primary: white;
+			--color-surface: #030303;
+		}
+
+
+		@function highlight($gap, $size: 0.25vmin, $color: var(--c)) {
+			@return -#{$gap $gap / 1.5 $size $color};
+		}
+
+		@function highlights() {
+			$result: (
+			);
+		$gap: 0.25vmin;
+		$count: 20;
+
+		@for $i from $count through 0 {
+			@if ($i ==$count) {
+				$result: list.append($result,
+						highlight($i * $gap, 0.01vmin, var(--c2)),
+						"comma"
+					);
+			}
+
+			@else if ($i ==$count - 1) {
+				$result: list.append($result,
+						highlight($i * $gap, 0.1vmin, rgba(255, 255, 255, 0.9)),
+						"comma"
+					);
+			}
+
+			@else {
+				$result: list.append($result,
+						highlight($i * $gap, 0.025vmin, var(--c)),
+						"comma"
+					);
+			}
+		}
+
+		@return $result;
+		}
+
+		.gefeliciteerd {
+			font-size: 8vw;
+			padding: 40px;
+			display: grid;
+			place-items: center;
+			text-shadow: 5px 5px #030303;
+			font-family: "Rajdhani", sans-serif;
+			font-weight: bold;
+			text-align: center;
+			background: conic-gradient(#f6a2f6,
+					#e74f89,
+					#7e7ecb,
+					#ffd500,
+					#ee75d2,
+					#13f5fa,
+					#f6a2f6);
+
+			background-clip: text;
+			-webkit-text-fill-color: transparent;
+			text-fill-color: transparent;
+
+			&::before {
+				position: absolute;
+				inset: 0;
+				color: transparent;
+				--c: color-mix(in srgb, white, transparent 94%);
+				--c2: var(--color-surface);
+				text-shadow: highlights();
+			}
+		}
+
+		a.labs-follow-me {
+			left: 2rem;
+			right: 2rem;
+			bottom: 1rem;
+			top: unset;
+			text-align: center;
+		}
+
+		* {
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="main-content">
+		<div class="gefeliciteerd">
+			GEFELICITEERD!!
+		</div>
+		<!-- Content block 1 (Text + Image) -->
+		<div class="content-block">
+			<p>Lieve Shanya, een verjaardagskaart is natuurlijk niet meer van deze tijd, dus dacht ik: ik maak een
+				digitale voor je!</p>
+			<img src="/content/IMG_2387.jpg" alt="Description of photo 1">
+		</div>
+
+		<!-- Content block 2 (Image + Text) -->
+		<div class="content-block">
+			<img src="/content/IMG_2325.jpg" alt="Description of photo 2">
+			<p>Ik heb al eerder beloofd je mee te nemen naar een feestje, maar dat is er niet van gekomen, dus ik heb een systeem bedacht, en ik leg het hieronder uit.
+				Je mag meenemen wie je wilt, hoe meer zielen hoe meer vreugde (kaartjes voor vrienden helaas niet inbegrepen in het cadeau) (voor klachten, bezoek: <a href="https://interesseert-me-geen-reet.nl">www.interesseert-me-geen-reet.nl</a>)
+			</p>
+		</div>
+
+		<!-- Content block 3 (Text + Image) -->
+		<div class="content-block">
+			<p>Hieronder zie je een agenda waar Sanne en mijn beschikbaarheid in staan, zodat je ziet wanneer wij kunnen.
+				Straks nog even een paar voorbeeldjes van feestjes, maar je mag zelf ook kiezen!
+				(agenda gaan we hierna pas invullen, dus kan zijn dat er een feestje tussenstaat waarbij wij niet kunnen 😂)
+			</p>
+			<img src="/content/IMG_0097.jpg" alt="Description of photo 3">
+		</div>
+		<div class="content-block">
+		<iframe src="https://calendar.google.com/calendar/embed?src=63d3a39ed1b4251e67edff9782cfbdb27ad453b5ee5065376395704e92709eb2%40group.calendar.google.com&ctz=Europe%2FAmsterdam" style="border: 0" max-width="600" height="450" frameborder="0" scrolling="no"></iframe>
+		<a href="https://calendar.google.com/calendar/u/0?cid=NjNkM2EzOWVkMWI0MjUxZTY3ZWRmZjk3ODJjZmJkYjI3YWQ0NTNiNWVlNTA2NTM3NjM5NTcwNGU5MjcwOWViMkBncm91cC5jYWxlbmRhci5nb29nbGUuY29t" style="padding: 15px; margin-top: 20px; border-radius: 25px;; border: solid rgb(22, 90, 143) 4px; color: black; background-color: rgb(0, 145, 255); text-decoration: none;">Kilk hier om deze agenda te bewaren!</a>
+		</div>
+		<div class="content-block">
+			<img style="margin-bottom: 20px;"src="/content/ASSET_00.jpg" alt="Description of photo 3">
+			Hierna volgen de voorgestelde feestjes.
+			Klik op de knop hieronder! (Zorg dat je alvast de agenda hebt opgeslagen door op de knop onder de agenda te kilkken)
+			(Ohja en met feestjes van intercell ade moet je ff snel zijn met uitkiezen, want die zijn bijna allemaal al uitverkocht, maar ik denk dat ik wat kan regelen.) (Hele leuke feestjes)
+		</div>
+		<div style="display: flex; justify-content: center; align-items: center; width: 100%">
+		<a href="/slides" style="padding: 15px; border-radius: 25px;; border: solid rgb(22, 90, 143) 4px; color: black; background-color: rgb(0, 145, 255); text-decoration: none;">Bekijk</a>
+	</div>
+	</div>
+</body>
+<script>
+    // Get video and main content elements
+    const videoOverlay = document.getElementById('video-overlay');
+    const mainContent = document.getElementById('main-content');
+    const introVideo = document.getElementById('intro-video');
+
+    // Listen for when the video ends
+    introVideo.addEventListener('ended', () => {
+      // Hide the video overlay
+      videoOverlay.style.display = 'none';
+      
+      // Show the main content
+      mainContent.style.display = 'block';
+    });
+  </script>
+</html>

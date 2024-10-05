@@ -2,17 +2,18 @@
 <html amp lang="en">
 
 <head>
+    <title id="metaTitle">Events</title>
+    <meta charset="utf-8" />
 	<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
     <script async src="https://cdn.ampproject.org/v0.js"></script>
     <script async custom-element="amp-story" src="https://cdn.ampproject.org/v0/amp-story-1.0.js"></script>
     <script async custom-element="amp-video" src="https://cdn.ampproject.org/v0/amp-video-0.1.js"></script>
     <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-    <meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="apple-touch-icon" sizes="180x180" href="../assets/apple-touch-icon.png">
 	<link rel="icon" type="image/png" sizes="32x32" href="../assets/favicon-32x32.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="../assets/favicon-16x16.png">
 	<link rel="manifest" href="../assets/site.webmanifest">
+    <link rel="canonical" id="get_link" href="https://gefeliciteerd-shanya.netlify.app/slides" />
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1" />
     <style amp-boilerplate>
         body {
@@ -89,65 +90,148 @@
 	<script>
 		const fileNamePrefix = 'VIDEO';	/* XXXXX_01.MP4		*/
 		const pdfName = "";											/* XXXXX.PDF		*/
-		const numberOfPages = 19;									/* NUMBER OF PAGES	*/							/* PAGE TITLE		*/
+		const numberOfPages = 5;									/* NUMBER OF PAGES	*/
+		const metaTitle = "Gefeliciteerd Shanya";								/* PAGE TITLE		*/
+		const get_link = "https://gefeliciteerd-shanya.netlify.app/slides";
 
 		/* DO NOT FORGET TO CHANGE THE GTAG AND TITLE OF AMP-STORY BELOW: CMD + F -> G- REPLACE ${GTAG}*/
-
 	</script>
 </head>
 
 <body>
-    <amp-story standalone title="Shanya" publisher="Devlin" supports-landscape>   
-		<div id="app">
-			<amp-story-page id="my-zero-page" auto-advance-after="5s">
-				<amp-story-grid-layer template="fill" autoplay>
-					<amp-img :src="`./assets/${fileNamePrefix}_00.jpg`" height="1080" width="1920" alt="">
-					</amp-img>
-				</amp-story-grid-layer>
-			</amp-story-page>    
-	
-				<amp-story-page :id="list[index].id" v-for="(item, index) in list" :auto-advance-after="`video${index}`">
+    <amp-story standalone title="Gefeliciteerd Shanya" publisher="Devlin" supports-landscape>    
+		<amp-story-page id="page-1" auto-advance-after="video-1">
+			<amp-story-grid-layer template="fill">
+			  <amp-video layout="fill" autoplay id="video-1" src="/slides/assets/VIDEO_00.mp4" height="720" width="1280" type="video/mp4">
+				<div fallback>
+				  <p>This browser does not support the video element.</p>
+				</div>
+			  </amp-video>
+			</amp-story-grid-layer>
+			<amp-story-grid-layer template="vertical">
+			  <h1 style="color: white; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; padding: 10px; text-shadow: 2px 2px 5px black; text-align: center; font-size: 2.8rem;">
+				INTERCELL
+			  </h1>
+			</amp-story-grid-layer>
+			<amp-story-page-outlink layout="nodisplay" theme="light">
+			  <a href="https://www.intercell.events/events" title="BEKIJK">BEKIJK</a>
+			</amp-story-page-outlink>
+		  </amp-story-page>
+
+				<amp-story-page id="page-2" auto-advance-after="video-2">
 					<amp-story-grid-layer template="fill">
-						<amp-video layout="fill" autoplay :id="`video${index}`" :src="`./assets/${list[index].src}`" height="1080" width="1980" type="video/mp4">
+						<amp-video layout="fill" autoplay id="video-2" src="/slides/assets/VIDEO_01.mp4" height="720" width="1280" type="video/mp4">
 							<div fallback>
 								<p>This browser does not support the video element.</p>
 							</div>
 						</amp-video>
 					</amp-story-grid-layer>
-					<amp-story-page-outlink v-if="listLen - 1 == index" layout="nodisplay" theme="light">
-						<a :href="`/hbd`" title="doorgaan">Ga door</a>
+					<amp-story-grid-layer template="vertical">
+						<h1 style="color: white; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; padding: 10px; text-shadow: 2px 2px 5px black; text-align: center; font-size: 2.1rem;">
+						  AWAKENINGS
+						</h1>
+					  </amp-story-grid-layer>
+					<amp-story-page-outlink layout="nodisplay" theme="light">
+						<a href="https://www.awakenings.com/en/?gad_source=1&gclid=CjwKCAjwx4O4BhAnEiwA42SbVE6o9TymTPhQfEYF0PnJo5NFnDmPFRljTCGz5HQIaJr7v9gGe1HXnRoCq5IQAvD_BwE" title="BEKIJK">BEKIJK</a>
 					</amp-story-page-outlink>
 				</amp-story-page>
-			</div>
+
+				<amp-story-page id="page-3" auto-advance-after="video-3">
+					<amp-story-grid-layer template="fill">
+						<amp-video layout="fill" autoplay id="video-3" src="/slides/assets/VIDEO_02.mp4" height="720" width="1280" type="video/mp4">
+							<div fallback>
+								<p>This browser does not support the video element.</p>
+							</div>
+						</amp-video>
+					</amp-story-grid-layer>
+					<amp-story-grid-layer template="vertical">
+						<h1 style="color: white; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; padding: 30px; margin-top: 90px; text-shadow: 2px 2px 5px black; text-align: center; font-size: 2.8rem;">
+						  VERKNIPT
+						</h1>
+					  </amp-story-grid-layer>
+					<amp-story-page-outlink layout="nodisplay" theme="light">
+						<a href="https://www.verknipt.org/" title="BEKIJK">BEKIJK</a>
+					</amp-story-page-outlink>
+				</amp-story-page>
+
+				<amp-story-page id="page-4" auto-advance-after="video-4">
+					<amp-story-grid-layer template="fill">
+						<amp-video layout="fill" autoplay id="video-4" src="/slides/assets/VIDEO_03.mp4" height="720" width="1280" type="video/mp4">
+							<div fallback>
+								<p>This browser does not support the video element.</p>
+							</div>
+						</amp-video>
+					</amp-story-grid-layer>
+					<amp-story-grid-layer template="vertical">
+						<h1 style="color: white; font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; padding: 30px; text-shadow: 2px 2px 5px black; text-align: center; font-size: 3rem;">
+						  DGTL
+						</h1>
+					  </amp-story-grid-layer>
+					<amp-story-page-outlink layout="nodisplay" theme="light">
+						<a href="https://dgtl.nl/" title="BEKIJK">BEKIJK</a>
+					</amp-story-page-outlink>
+				</amp-story-page>
+
+					<amp-story-page id="page-5">
+						<!-- Background layer (optional for background color or image) -->
+						<amp-story-grid-layer template="fill">
+						  <div style="background-color: #1a1a1a;"></div> <!-- Dark background -->
+						</amp-story-grid-layer>
+						
+					  
+						<!-- Layer for modern text styling -->
+						<amp-story-grid-layer template="vertical">
+						  <!-- Main Heading -->
+						  <h1 style="
+							font-size: 2rem;
+							color: #fff;
+							text-align: center;
+							font-family: 'Helvetica Neue', sans-serif;
+							text-transform: uppercase;
+							/* margin: 0 10px; */
+							letter-spacing: 2px;">
+							DIT WAREN DE VOORBEELDEN
+						  </h1>
+					  
+						  <!-- Subheading / Description -->
+						  <p style="
+							font-size: 1.5rem;
+							color: #f0f0f0;
+							text-align: center;
+							line-height: 1.8;
+							margin-top: 30px;
+							font-family: 'Arial', sans-serif;">
+							Je mag natuurlijk zelf ook iets uitiezen, maar ik dacht dan heb je alvast een beetje inspiratie.
+							Love you!
+						  </p>
+					  
+						  <!-- Decorative line to add a modern touch -->
+						  <div style="
+							width: 100px;
+							height: 3px;
+							background-color: #f39c12;
+							margin: 20px auto;"></div>
+					  
+						  <!-- Button-style Outlink -->
+						  <a href="/hbd_zonder.html" target="_blank" style="
+							display: inline-block;
+							padding: 15px 30px;
+							background-color: #f39c12;
+							color: #fff;
+							text-decoration: none;
+							text-align: center;
+							font-size: 1.2rem;
+							font-weight: bold;
+							border-radius: 30px;
+							margin: 40px auto;
+							font-family: 'Arial', sans-serif;">
+							TERUG NAAR HOME
+						  </a>
+						</amp-story-grid-layer>
+					  </amp-story-page>
+					  
+				
 		</amp-story>
-		<script>
-			const { createApp, ref } = Vue
-	
-			createApp({
-				setup() {
-					const padNumberWithZeros = (number, length) => {
-						return number.toString().padStart(length, '0');
-					};
-					const nums = ['first', 'second', 'third', 'forth', 'fifth', 'sixth', 'seventh', 'eighth', 'ninth', 'tenth', 'eleventh', 'twelfth', 'thirteenth', 'fourteenth', 'fifteenth', 'sixteenth', 'seventeenth', 'eighteenth', 'nineteenth', 'twentieth', 'twenty-first', 'twenty-second', 'twenty-third', 'twenty-fourth', 'twenty-fifth', 'twenty-sixth', 'twenty-seventh', 'twenty-eighth', 'twenty-ninth', 'thirtieth'];
-					const list = [];
-					for (let i = 1; i <= numberOfPages; i++) {
-						const paddedIndex = padNumberWithZeros(i, 2);
-						const filename = `${fileNamePrefix}_${paddedIndex}.mp4`;	// FORMAT: NAME_OF_FILE_01.mp4
-						const id = `my-${nums[i - 1]}-page`;
-	
-						list.push({ src: filename, id: id });
-					}
-					const listLen = list.length
-					const pdf = pdfName;
-					return {
-						listLen,
-						pdf,
-						list,
-						fileNamePrefix,
-					}
-				}
-			}).mount('#app')
-		</script>
 	</body>
 	
 	</html>
